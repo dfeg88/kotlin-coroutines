@@ -1,0 +1,5 @@
+api:
+  currency-one:
+    host: http://localhost:${wiremock.server.port}/api/currencyone
+  currency-two:
+    host: http://localhost:${wiremock.server.port}/api/currencytwo

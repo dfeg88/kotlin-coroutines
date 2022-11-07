@@ -33,7 +33,7 @@ class CurrencyIntegrationTest : BaseIntegrationTest() {
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk
-            .expectBody<String>().isEqualTo("0.6666666666666666")
+            .expectBody<String>().isEqualTo("3.0")
 
         val end = Instant.now()
 

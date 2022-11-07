@@ -15,7 +15,7 @@ class CurrencyService(
         val currencyTwoResult = async { currencyProviderTwo.get() }
         val currencyResponses = listOf(currencyOneResult.await(), currencyTwoResult.await())
 
-        currencyResponses.maxOf { it.gbp / it.usd }
+        currencyResponses.maxOf { it.usd / it.gbp }
             .toString()
     }
 

@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController
 class CurrencyController(private val currencyService: CurrencyService) {
 
     @GetMapping
-    suspend fun getExchangeRates(): ResponseEntity<String> = ResponseEntity.ok(currencyService.getBestExchangeRate())
+    suspend fun getExchangeRates(): ResponseEntity<Double> = ResponseEntity.ok(currencyService.getBestExchangeRate())
 
 }

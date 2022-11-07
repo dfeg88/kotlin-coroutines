@@ -4,6 +4,7 @@ import com.github.tomakehurst.wiremock.client.WireMock.*
 import io.netty.handler.codec.http.HttpHeaderValues
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpHeaders.CONTENT_TYPE
@@ -33,13 +34,11 @@ class CurrencyIntegrationTest : BaseIntegrationTest() {
             .accept(MediaType.APPLICATION_JSON)
             .exchange()
             .expectStatus().isOk
-            .expectBody<String>().isEqualTo("3.0")
+            .expectBody<Double>().isEqualTo(3.0)
 
         val end = Instant.now()
-
-        val timeTaken = end.minusSeconds(start.epochSecond)
-
-        Assertions.assertTrue(timeTaken.epochSecond == 5L)
+        val timeTaken = end.minusSeconds(start.epochSecond).epochSecond
+        assertEquals(5, timeTaken)
     }
 
     private fun stubApiRequests() {

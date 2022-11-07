@@ -13,10 +13,9 @@ class CurrencyService(
     suspend fun getBestExchangeRate() = coroutineScope {
         val currencyOneResult = async { currencyProviderOne.get() }
         val currencyTwoResult = async { currencyProviderTwo.get() }
-        val currencyResponses = listOf(currencyOneResult.await(), currencyTwoResult.await())
 
-        currencyResponses.maxOf { it.usd / it.gbp }
-            .toString()
+        listOf(currencyOneResult.await(), currencyTwoResult.await())
+            .maxOf { it.usd / it.gbp }
     }
 
 }
